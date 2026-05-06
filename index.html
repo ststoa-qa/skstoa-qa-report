@@ -1107,8 +1107,8 @@ function fillProds(){
     /* 날짜별 행 */
     g.rows.forEach(function(p){
       var rate=p.shp>0?((p.cmp/p.shp)*100):0;
-      var over=tgVal!==null&&rate>tgVal;
-      /* 목표율 초과시만 빨간색, 이하면 기본 텍스트색 */
+      var over=tgVal!==null&&rate>tgVal&&p.shp>=500;
+      /* 목표율 초과 + 출고수량 500 이상일 때만 빨간색 */
       var rc=over?'var(--err)':'var(--text)';
 
       /* 방송시간: "26/03/08 15:21 ~ 26/03/08 16:21" → "15:21 ~ 16:21" */
@@ -1140,7 +1140,7 @@ function fillProds(){
     /* 상품코드 소합계 행 */
     if(g.rows.length>1){
       var subRate=g.shp>0?((g.cmp/g.shp)*100):0;
-      var subOver=tgVal!==null&&subRate>tgVal;
+      var subOver=tgVal!==null&&subRate>tgVal&&g.shp>=500;
       var src=subOver?'var(--err)':'var(--text)';
       var subNote='',subNoteColor='';
       if(tgVal!==null && g.shp>=500){
@@ -1164,7 +1164,7 @@ function fillProds(){
 
   /* 전체 합계행 */
   var totRate=totShp>0?((totCmp/totShp)*100):0;
-  var totOver=tgVal!==null&&totRate>tgVal;
+  var totOver=tgVal!==null&&totRate>tgVal&&totShp>=500;
   var totRc=totOver?'var(--err)':'var(--text)';
   var totNote='',totNoteColor='';
   if(tgVal!==null && totShp>=500){
