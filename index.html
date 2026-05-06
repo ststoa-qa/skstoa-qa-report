@@ -1441,9 +1441,13 @@ async function generateRec(){
       body:JSON.stringify({prompt:prompt})
     });
     var data=await res.json();
+    console.log('API 응답 status:', res.status);
+    console.log('API 응답 data:', JSON.stringify(data));
     var raw=data.content.map(function(i){return i.text||'';}).join('');
+    console.log('raw text:', raw);
     renderRecs(JSON.parse(raw.replace(/```json|```/g,'').trim()));
   }catch(e){
+    console.error('에러 발생:', e.message, e);
     /* 폴백: 실효성 있는 기본 권고사항 */
     renderRecs([
       {tag:'사이즈 가이드',text:'웹 기술서 및 방송 시연 시 실제 착용 모델 이미지 활용과 추가 치수 기재를 통해 사이즈 가이드의 정확도를 높이시길 제안드립니다.'},
