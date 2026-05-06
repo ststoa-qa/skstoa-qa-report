@@ -1119,7 +1119,7 @@ function fillProds(){
 
       /* 비고 */
       var note='',noteColor='';
-      if(tgVal!==null){
+      if(tgVal!==null && p.shp>=500){
         if(rate>tgVal*3){note='한계치 초과';noteColor='#7C3AED';}
         else if(rate>tgVal*2){note='허용치 초과';noteColor='var(--err)';}
         else if(rate>tgVal){note='목표치 초과';noteColor='#F59E0B';}
@@ -1143,7 +1143,7 @@ function fillProds(){
       var subOver=tgVal!==null&&subRate>tgVal;
       var src=subOver?'var(--err)':'var(--text)';
       var subNote='',subNoteColor='';
-      if(tgVal!==null){
+      if(tgVal!==null && g.shp>=500){
         if(subRate>tgVal*3){subNote='한계치 초과';subNoteColor='#7C3AED';}
         else if(subRate>tgVal*2){subNote='허용치 초과';subNoteColor='var(--err)';}
         else if(subRate>tgVal){subNote='목표치 초과';subNoteColor='#F59E0B';}
@@ -1167,7 +1167,7 @@ function fillProds(){
   var totOver=tgVal!==null&&totRate>tgVal;
   var totRc=totOver?'var(--err)':'var(--text)';
   var totNote='',totNoteColor='';
-  if(tgVal!==null){
+  if(tgVal!==null && totShp>=500){
     if(totRate>tgVal*3){totNote='한계치 초과';totNoteColor='#7C3AED';}
     else if(totRate>tgVal*2){totNote='허용치 초과';totNoteColor='var(--err)';}
     else if(totRate>tgVal){totNote='목표치 초과';totNoteColor='#F59E0B';}
